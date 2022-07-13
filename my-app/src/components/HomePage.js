@@ -2,7 +2,7 @@
 import HouseCollection from "./HouseCollection";
 import Search from "./Search";
 import { Container } from "semantic-ui-react";
-import { useState } from "react"
+import { useState } from "react";
 
 function HomePage({ houses }) {
   

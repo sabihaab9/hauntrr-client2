@@ -1,9 +1,11 @@
-import React, {useEffect, useState, useHistory} from "react";
+import React, {useEffect, useState} from "react";
+import { useHistory } from "react-router-dom";
 import {Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import HomePage from "./components/HomePage";
 import Properties from "./components/Properties";
+import { useNavigate } from 'react-router-dom';
 
 const App = () => {
   //useState variables -> set users, ghosts and houses and maybe hauntings
@@ -13,6 +15,7 @@ const [ghosts, setGhosts] = useState([])
 const [houses, setHouses] = useState([])
 const [error, setError] = useState("")
 const [currentUser, setCurrentUser] = useState({})
+
 
 const history = useHistory()
 
@@ -94,12 +97,12 @@ const handleLogin = details => {
         users = {users}/>
       </Route>
 
-      <Route path="/properties" >
+      {/* <Route path="/properties" >
         <Properties
         ghosts = {ghosts}
         houses = {houses}
         users = {users}/>
-      </Route>
+      </Route> */}
 
     </div>
   );
