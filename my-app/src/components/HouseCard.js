@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Card } from "semantic-ui-react";
 
-function HouseCard({ house }) {
+function HouseCard({ house, currentUser }) {
  
   const [ghostIcon, setGhostIcon] = useState({icon: "👻", color: ""})
 
   function toggleGhost(){
 
-    if(likeList.includes(user.name)){
-      setHeart({icon:"👻", color: "green"})
+    if(house.ghosts.filter(ghost=>ghost.name).includes(currentUser.name)){
+      setGhostIcon({icon:"👻", color: "green"})
     }
-    if(!likeList.includes(user.name)){
-      setHeart({icon:"👻", color: ""})
+    else {
+      setGhostIcon({icon:"👻", color: ""})
     }
   }
 

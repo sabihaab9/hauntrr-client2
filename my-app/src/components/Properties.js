@@ -8,3 +8,5 @@ function Properties({houses, users, ghosts}){
         </div>
     )
 }
+
+export default Properties
