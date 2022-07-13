@@ -2,8 +2,6 @@ import React, {useEffect, useState} from "react";
 import {Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
-import Ghost from "./components/Ghost";
-import Homeowner from "./components/House";
 
 //useState variables -> set users, ghosts and houses and maybe hauntings
 //fetch user data as an effect on page l oad
@@ -32,6 +30,7 @@ useEffect(()=> {
 }, [])
 
 
+
 const App = () => {
   return (
     <div>
@@ -42,14 +41,14 @@ const App = () => {
         onSignup={handleSignup}/>
       </Route>
 
-      <Route exact path="/signup" >
+      <Route path="/signup" >
         <SignUp
         handleLogin={handleLogin}
         error={error}
         onSignup={handleSignup}/>
       </Route>
       
-      <Route exact path="/homepage" >
+      <Route path="/homepage" >
         <HomePage
         handleLogin={handleLogin}
         error={error}
