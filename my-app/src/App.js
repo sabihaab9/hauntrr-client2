@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import {React, useEffect, useState} from "react";
 import {Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
-
-
+import HomePage from "./components/HomePage";
+import Properties from "./components/Properties";
 
 
 const App = () => {
@@ -40,6 +40,10 @@ useEffect(()=> {
 
 function goHome() {
   history.push("/home")
+}
+
+function handleSignup() {
+  
 }
 
 const handleLogin = details => {

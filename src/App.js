@@ -2,10 +2,11 @@ import React, {useEffect, useState} from "react";
 import {Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
-import Card from 'react-bootstrap/Card'
-import Image from 'react-bootstrap/Image'
 
-//useState variables -> set users, ghosts and houses and maybe hauntings
+
+
+const App = () => {
+  //useState variables -> set users, ghosts and houses and maybe hauntings
 //fetch user data as an effect on page l oad
 const [users, setUsers] = useState([])
 const [ghosts, setGhosts] = useState([])
@@ -65,8 +66,6 @@ const handleLogin = details => {
   }
 
 }
-
-const App = () => {
   return (
     <div>
       <Route exact path="/" >
