@@ -8,26 +8,59 @@ import Login from "./components/Login";
 const [users, setUsers] = useState([])
 const [ghosts, setGhosts] = useState([])
 const [houses, setHouses] = useState([])
+const [error, setError] = useState("")
+const [currentUser, setCurrentUser] = useState({})
+
+const history = useHistory()
 
 useEffect(()=> {
-    fetch("http://api.open-notify.org/astros.json")
+    fetch("http://localhost:9292/users")
     .then((response) => response.json())
     .then((json) => {
       setUsers(json)
     })
 
-    fetch("http://api.open-notify.org/astros.json")
+    fetch("http://localhost:9292/ghosts")
     .then((response) => response.json())
     .then((json) => {
       setGhosts(json)
     })
 
-    fetch("http://api.open-notify.org/astros.json")
+    fetch("http://localhost:9292/houses")
     .then((response) => response.json())
     .then((json) => {
       setHouses(json)
     })
 }, [])
+
+const handleLogin = details => {
+    
+  let login = false
+  
+  users.forEach(temp=>{
+
+    if(temp.password === details.password && temp.name === details.name){
+      console.log('logged in!')
+      login = true
+      setCurrentUser(temp)
+    }
+  })
+
+  if(!login){
+    setError("Error: Incorrect Details")
+  }
+  else {
+    if(currentUser.is_ghost){
+      history.push("/home")
+    }
+    else {
+      history.push("/properties")
+    }
+  }
+
+}
+
+
 
 
 
@@ -48,7 +81,13 @@ const App = () => {
         onSignup={handleSignup}/>
       </Route>
       
-      <Route path="/homepage" >
+      <Route path="/home" >
+        <HomePage
+        ghosts = {ghosts}
+        houses = {houses}/>
+      </Route>
+
+      <Route path="/properties" >
         <HomePage
         handleLogin={handleLogin}
         error={error}

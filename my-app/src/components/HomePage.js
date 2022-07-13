@@ -2,13 +2,12 @@
 import HouseCollection from "./HouseCollection";
 import Search from "./Search";
 import { Container } from "semantic-ui-react";
-// import Ghost from "./Ghost";
-// import House from "./Home";
+
 
 
 function HomePage() {
   
-    const [searchValues, setSearchValues] = useState({name: "", isHaunted: null, distance: null});
+    const [searchValues, setSearchValues] = useState({name: "", abandoned: false, distance: 100});
     //want state to be an obj, not string 
 
     //need to edit which houses we should display 
