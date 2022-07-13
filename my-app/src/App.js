@@ -33,6 +33,10 @@ useEffect(()=> {
     })
 }, [])
 
+function goHome() {
+  history.push("/home")
+}
+
 const handleLogin = details => {
     
   let login = false
@@ -60,10 +64,6 @@ const handleLogin = details => {
 
 }
 
-
-
-
-
 const App = () => {
   return (
     <div>
@@ -77,22 +77,23 @@ const App = () => {
       <Route path="/signup" >
         <SignUp
         handleLogin={handleLogin}
-        error={error}
-        onSignup={handleSignup}/>
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+        error={error}/>
       </Route>
       
       <Route path="/home" >
         <HomePage
         ghosts = {ghosts}
-        houses = {houses}/>
+        houses = {houses}
+        users = {users}/>
       </Route>
 
       <Route path="/properties" >
-        <HomePage
-        handleLogin={handleLogin}
-        error={error}
-        onSignup={handleSignup}
-        houses = {houses}/>
+        <Properties
+        ghosts = {ghosts}
+        houses = {houses}
+        users = {users}/>
       </Route>
 
     </div>

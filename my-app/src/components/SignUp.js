@@ -1,23 +1,20 @@
 import {React, useState, useEffect} from 'react'
 
-function SignUp({handleLogin, pushToFeed, user, setUser}) {
+function SignUp({handleLogin, currentUser, setCurrentUser}) {
   const [newUser, setNewUser] = useState({name: "", password: "", profilePic: "/images/avatars/defaultIcon.png"})
   const submitHandler = e => {
     e.preventDefault();
     console.log(newUser)
-    fetch('http://localhost:3001/users',
+    fetch('http://localhost:9292/users',
     {method: "POST",
     headers: {"Content-Type":"application/json"},
     body:JSON.stringify(newUser)})
     .then(res=>res.json())
     .then(data=> {
-      fetch(`http://localhost:3001/currentUser`,{
-      method: 'PATCH',
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify(data)
-    })
-    .then(pushToFeed)})
+      setCurrentUser(data)
+      handleLogin(currentUser)})
   }
+
   function handleOnChange(e){
     const value = e.target.value
     const name = e.target.name
@@ -25,6 +22,7 @@ function SignUp({handleLogin, pushToFeed, user, setUser}) {
     [name]: value})
   }
   useEffect(() => {}, [])
+
   return (
     <div id='sign-up-form' className='all-forms-div'>
         <form className='info' onSubmit={submitHandler}>
@@ -51,4 +49,5 @@ function SignUp({handleLogin, pushToFeed, user, setUser}) {
     </div>
   )
 }
+
 export default SignUp

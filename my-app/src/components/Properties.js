@@ -1,7 +1,8 @@
 import { Container } from "semantic-ui-react";
 
-function Properties(){
+function Properties({houses, users, ghosts}){
 
+    
 
     return (
         <div>
